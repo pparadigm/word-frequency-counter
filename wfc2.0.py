@@ -52,13 +52,17 @@ while True:
         rawText = str(input("\nPlease paste text below:\n"))
         break
     elif preference == "2":
-        # Eventually have program check to see if file exists (except FileNotFoundError)
-        filename = str(input("\nFile should be in the same "
-                             "directory as this program.\n"
-                             "Enter filename: "))
-        fileToParse = open(filename, "r")
-        rawText = fileToParse.read()
-        break
+        try:
+            filename = str(input("\nFile should be in the same "
+                                 "directory as this program.\n"
+                                 "Enter filename: "))
+            fileToParse = open(filename, "r")
+            rawText = fileToParse.read()
+            break
+        except FileNotFoundError:
+            print("\nError: file not found. Check for correct spelling and "
+                  "ensure that the file you are intending to use is in the "
+                  "proper directory.\n")
     else:
         print("Invalid input. Restarting...\n")
 
