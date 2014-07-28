@@ -5,10 +5,21 @@
 import TextProcessor
 # initialize global variables (if any)
 
-
-# tally words
+    
 # determine the case of a word
 # store results
+
+
+def tallier(listedWords):
+    '''Count instances of each word.'''
+    tallies = {}
+    # Each time the for loop encounters a word, it will be recorded
+    for instance in listedWords:
+        if instance in tallies:
+            tallies[instance] += 1
+        else:
+            tallies[instance] = 1
+    return(tallies)
 
 
 '''Program initialization loop: fetch raw text from user.'''
@@ -35,6 +46,12 @@ while True:
                   "proper directory.\n")
     else:
         print("Invalid input. Restarting...\n")
-        
-process = TextProcessor.TextProcessor()
-wordList = process.wordExtractor(rawText)
+
+
+def main():        
+    process = TextProcessor.TextProcessor()
+    wordList = process.wordExtractor(rawText)
+    rawCounts = tallier(wordList)
+
+    
+main()
